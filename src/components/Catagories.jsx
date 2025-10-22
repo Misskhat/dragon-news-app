@@ -5,7 +5,7 @@ const categoriesPromose = fetch("/categories.json").then((res) => res.json());
 
 const Catagories = () => {
     const categoriesData = use(categoriesPromose);
-    console.log(categoriesData);
+    // console.log(categoriesData);
     return (
         <div>
             <p className="font-bold"> All Categories ({categoriesData.length})</p>
