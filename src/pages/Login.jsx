@@ -9,10 +9,12 @@ const Login = () => {
                     <h2 className=" text-2xl font-bold text-center">Login your account</h2>
                     <form>
                         <fieldset className="fieldset">
+                            {/* Email section */}
                             <label className="label">Email</label>
-                            <input type="email" className="input" placeholder="Email" />
+                            <input type="email" className="input" placeholder="Email" name="email" />
+                            {/* Password section */}
                             <label className="label">Password</label>
-                            <input type="password" className="input" placeholder="Password" />
+                            <input type="password" className="input" placeholder="Password" name="password" />
                             <div>
                                 <a className="link link-hover">Forgot password?</a>
                             </div>
@@ -20,9 +22,9 @@ const Login = () => {
                         </fieldset>
                     </form>
                     <p className="text-center font-semibold pt-3">
-                        Dont’t Have An Account ?{" "}
+                        Dont’t Have An Account?
                         <Link to={"/auth/register"}>
-                            <span className="font-bold text-secondary">Register</span>
+                            <span className="font-bold text-secondary"> Register</span>
                         </Link>
                     </p>
                 </div>
