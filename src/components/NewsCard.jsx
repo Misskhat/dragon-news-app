@@ -3,7 +3,7 @@ import {FaEye, FaStar} from "react-icons/fa";
 import {Link} from "react-router";
 
 const NewsCard = ({news}) => {
-    const {id, title, thumbnail_url, details, author, total_view, rating, tags} = news;
+    const {id, title, thumbnail_url, details, author, total_view, rating} = news;
 
     return (
         <div className="card bg-base-100 shadow-md">
@@ -38,7 +38,7 @@ const NewsCard = ({news}) => {
                 {/* 📄 Details */}
                 <p className="text-sm text-gray-600 leading-relaxed">
                     {details.length > 180 ? details.slice(0, 180) + "..." : details}
-                    <Link to={"/news-details/id"} className="text-primary cursor-pointer font-medium ml-1">
+                    <Link to={`/news-details/${id}`} className="text-primary cursor-pointer font-medium ml-1">
                         Read More
                     </Link>
                 </p>
