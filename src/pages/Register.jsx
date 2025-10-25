@@ -1,20 +1,33 @@
 import React, {use} from "react";
-import {Link} from "react-router";
+import {Link, useNavigate} from "react-router";
 import {AuthContext} from "../provider/AuthProvider";
 
 const Register = () => {
-    const {creatUser, setUser} = use(AuthContext);
+    const {creatUser, setUser, updateUser} = use(AuthContext);
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const photoURL = form.photoURL.value;
+        const photo = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
         const terms = form.terms.checked;
-        console.log({name, photoURL, email, password, terms});
+        console.log({name, photo, email, password, terms});
         creatUser(email, password)
-        .then((result) => setUser(result.user))
+        .then((result) => {
+            const user = result.user;
+            updateUser({displayName: name, photoURL: photo})
+            .then(() => {
+                setUser({...user, displayName: name, photoURL: photo});
+                alert("Profile updated");
+                navigate("/");
+            })
+            .catch((error) => {
+                console.log(error);
+                setUser(user);
+            });
+        })
         .catch((error) => console.log(error));
     };
     return (
